@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Daniel Quintero Henriquez">
+    <meta name="description" content="Escena de realidad aumentada con a-frame">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Realidad Aumentada</title>
+    
+    <!-- Archivos locales en lugar de enlaces externos -->
+    <script src="librerias/aframe.min.js"></script>
+    <script src="librerias/aframe-ar.js"></script>
+    <script src="librerias/aframe-environment-component.min.js"></script>
+    <script src="librerias/aframe-extras.min.js"></script>
+</head>
+
+<body>
+    <a-scene vr-mode-ui="enabled: false" arjs="sourceType:webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;">
+        <a-assets>
+            <!-- Reemplaza esta ruta con la ubicación local del archivo GLTF -->
+            <a-assets-item id="gatito" src="toon_cat_free/scene.gltf"></a-assets-item>
+        </a-assets>
+
+        <a-marker type="pattern" url="marcador/pattern-happyface.patt">
+            <a-entity position="0 0 0"  gltf-model="#gatito" modify-materials="" scale="0.002 0.002 0.002" event-set__enter="_event: mouseenter; _target:#gatito ; color: #F00" event-set__leave="_event: mouseleave; _target: #gatico; color: #FFF"></a-entity>
+        </a-marker>
+        
+        <a-entity camera></a-entity>
+    </a-scene>
+</body>
+</html>
